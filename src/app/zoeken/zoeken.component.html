@@ -1,0 +1,24 @@
+<p>zoek op opnameplaats</p>
+<form [formGroup]="opnameplaatsFormGroup" (ngSubmit)="gevondenopnameplaats()">
+    <div>
+        <label> opnameplaats </label>
+        <input type="String" formControlName="opnameplaats">
+    </div>
+    <button type="submit" (click)="gevondenopnameplaats()">Zoeken</button>
+</form><br/>
+
+<table *ngIf="zoeken">
+  
+    <tr>
+      <th>gevonden platsen</th>
+    </tr>
+
+  <tr *ngFor="let pok of zoeken">
+            <td>{{pok.datum_vaststelling_jaar}}</td>
+            <td>{{pok.datum_vaststelling_maand}}</td>
+            <td>{{pok.datum_vaststelling}}</td>
+            <td>{{pok.opnameplaats_straat}}</td>
+            <td>{{pok.opnameplaats_rijrichting_gaand}}</td><br/>
+  </tr>
+
+</table><br/><br/>
