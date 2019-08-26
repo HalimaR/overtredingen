@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { OvertredingService } from '../service/overtreding.service';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private httpService: HttpClient, private overtredingService: OvertredingService) { }
+  list = [];
   ngOnInit() {
+    this.httpService.get('./assets/overtred.json').subscribe(
+      data => {
+        this.list = data as string[];   //fill the array with data
+        //console.log(this.opnamelist[1]);
+      },
+      (err: HttpErrorResponse) => {
+        console.log(err.message);
+      }
+    );
   }
-
+  lijstvanovertredingen(){
+    this.list = this.overtredingService.lijstalleovertredingen(this.list);
+  }
 }

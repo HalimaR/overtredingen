@@ -1,1 +1,14 @@
-<p>list works!</p>
+<p>alle overtredingen</p>
+<table *ngIf="list">
+  
+    <tr>
+      <th>gevonden</th>
+    </tr>
+
+  <tr *ngFor="let pok of list">
+            <td>{{pok.aantal_overtredingen_snelheid}}</td>
+            <td>{{pok.opnameplaats_straat}}</td>
+            <td>{{pok.opnameplaats_rijrichting_gaand}}</td><br/>
+  </tr>
+
+</table><br/><br/>

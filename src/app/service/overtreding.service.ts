@@ -8,6 +8,7 @@ export class OvertredingService {
   constructor() { }
   private plaatslist: Array<string> = [];
   private snelheidlist: Array<string> = [];
+  private list: Array<string> = [];
 
   zoekenOpnameplaats(plaats, lijstplaats): Array<string> {
     this.plaatslist = [];
@@ -30,5 +31,11 @@ export class OvertredingService {
     }
     return this.snelheidlist;
   }
-
+  lijstalleovertredingen(lijst):Array<string>{
+    this.list = [];
+    for (let l of lijst) {
+        this.snelheidlist.push(l);
+    }
+    return this.list;
+  }
 }
