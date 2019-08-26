@@ -1,1 +1,22 @@
-<p>resultaantal works!</p>
+<p>zoek op snelheid</p>
+<form [formGroup]="snelheidFormGroup" (ngSubmit)="gevondensnelheid()">
+    <div>
+        <label>geef een snelheid </label>
+        <input type="intiger" formControlName="snelheid">
+    </div>
+    <button type="submit" (click)="gevondensnelheid()">Zoeken</button>
+</form><br/>
+
+<table *ngIf="zoeken">
+  
+    <tr>
+      <th>gevonden snelheid</th>
+    </tr>
+
+  <tr *ngFor="let pok of zoeken">
+            <td>{{pok.aantal_overtredingen_snelheid}}</td>
+            <td>{{pok.opnameplaats_straat}}</td>
+            <td>{{pok.opnameplaats_rijrichting_gaand}}</td><br/>
+  </tr>
+
+</table><br/><br/>
